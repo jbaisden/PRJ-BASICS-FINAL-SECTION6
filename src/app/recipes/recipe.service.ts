@@ -1,8 +1,11 @@
 import { Recipe } from "./recipe.model";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
+import { ShoppingListService } from "../shopping-list/shopping-list.service";
 
+@Injectable()
 export class RecipeService {
+
     private recipes: Recipe[] = [
         new Recipe('A Tasty Schnitzel',
             'A super-tasty scnitzel - just awesome!',
@@ -20,10 +23,21 @@ export class RecipeService {
             ])
     ];
 
+    constructor(private shoppingListService: ShoppingListService) { }
+
     recipeSelected = new EventEmitter<Recipe>();
 
     getRecipes() {
         //calling slice returns a new array and not a reference to the this.recipes object.
         return this.recipes.slice();
+    }
+
+    addIngredientsToShoppingList(ingredients: Ingredient[]) {
+        // this.ingredients.push(
+        //     ingredient);
+        // this.ingredientsChanged.emit(this.ingredients.slice());
+        console.log('recipe.server.addIngredientsToShoppingList');
+        console.log(ingredients);
+        this.shoppingListService.addIngredients(ingredients);
     }
 }
