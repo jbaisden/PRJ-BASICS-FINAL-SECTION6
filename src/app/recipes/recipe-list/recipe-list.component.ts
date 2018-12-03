@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Recipe } from '../recipe.model';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { RecipeService } from '../recipe.service';
 
 @Component({

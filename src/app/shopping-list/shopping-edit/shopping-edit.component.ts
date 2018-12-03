@@ -14,9 +14,13 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('amountInput') amountInputRef: ElementRef;
 
   AddIngredient() {
-    this.shoppingListService.addIngredient(new Ingredient(
-      this.nameInputRef.nativeElement.value,
-      this.amountInputRef.nativeElement.value));
+    // this.shoppingListService.addIngredient(new Ingredient(
+    //   this.nameInputRef.nativeElement.value,
+    //   this.amountInputRef.nativeElement.value));
+      const ingName = this.nameInputRef.nativeElement.value;
+      const ingAmount = this.amountInputRef.nativeElement.value;
+      const newIngredient = new Ingredient(ingName, ingAmount);
+      this.shoppingListService.addIngredient(newIngredient);      
     console.log('ingredient added');
   }
 
