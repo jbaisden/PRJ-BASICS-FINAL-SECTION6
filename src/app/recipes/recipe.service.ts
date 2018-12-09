@@ -25,7 +25,7 @@ export class RecipeService {
 
     constructor(private shoppingListService: ShoppingListService) { }
 
-    recipeSelected = new EventEmitter<Recipe>();
+    // recipeSelected = new EventEmitter<Recipe>();
 
     getRecipes() {
         //calling slice returns a new array and not a reference to the this.recipes object.
